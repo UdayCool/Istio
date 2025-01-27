@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: uday-virtualservice
+spec:
+  hosts:
+    - "example.com"
+  gateway:
+    - "uday-gateway"
+  http:
+    - match :
+        - uri:
+            prefix: "/"
+      route:
+        - destination:
+            host: http-service.default.svc.local
+            port: 8080
+    - match :
+        -uri:
+          prefix: "/"
+      route:
+        - destination:
+            host: https-service.default.svc.local
+            port:
+
+
