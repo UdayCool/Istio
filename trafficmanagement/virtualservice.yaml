@@ -15,12 +15,16 @@ spec:
         - destination:
             host: http-service.default.svc.local
             port: 8080
+            subset: v1
+          weight: 80
     - match :
         -uri:
-          prefix: "/"
+          prefix: "/anything"
       route:
         - destination:
             host: https-service.default.svc.local
-            port:
+            port: 8443
+            subset: v1
+          weight: 80
 
 
